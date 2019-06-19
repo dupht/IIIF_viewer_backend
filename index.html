@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>リクエスト用</title>
+    </head>
+    <body>
+        <form name="myform" onsubmit="sendJson()">
+            Manifest.jsonのURL : <input type="text" id="manifest"/>
+            <input type="submit" value="送信"/>
+            <input type="reset" value="リセット"/>
+        </form>
+
+        <script>
+            function sendJson(){
+                const manifest = document.getElementById("manifest").value;
+                const manifest_url = {"url": manifest};
+                fetch("http://localhost:3000", {
+                    method: "POST",
+                    body: JSON.stringify(manifest_url),
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                }).then(res => res.json())
+                .then(response => console.log('Success:', JSON.stringify(response)))
+                .catch(error => console.error('Error:', error));
+            }
+        </script>
+    </body>
+</html>

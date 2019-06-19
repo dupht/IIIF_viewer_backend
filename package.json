@@ -1,0 +1,12 @@
+{
+  "name": "IIIF_viewer_backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:dupht/IIIF_viewer_backend.git",
+  "author": "dupht <hanteru1999@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "node-fetch": "^2.6.0"
+  }
+}
