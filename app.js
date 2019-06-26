@@ -10,10 +10,10 @@ const images = [];
 app.get("/", function (req, res){
     const manifest_url = req.body;
     if( manifest_url.match(/http/) ){
+    // if文でURLでないものを弾く(この仕組みを採用するときはmatchを厳密にすること)
         fetch(manifest_url)
         .then(res => res.json())
         .then(response => {
-            console.log('Success!');
             response.sequences[0].canvases.forEach(element => {
                 images.push(element.thumbnail["@id"]);
             });
