@@ -1,2 +1,3 @@
-node_modules
-openseadragon*
+/node_modules
+/openseadragon-bin-2.4.0
+/.env
