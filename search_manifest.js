@@ -5,6 +5,10 @@ const { URLSearchParams } = require('url');
 
 fetch.Promise = Bluebird;
 
+function http_manifest( response ){
+    
+}
+
 function get_manifest( query ){
     let api_key = process.env.EUROPEAN_API_KEY;
     let url = new URL("https://www.europeana.eu/api/v2/search.json");
@@ -15,7 +19,7 @@ function get_manifest( query ){
     fetch( url )
     .then( res => res.json() )
     .then( response => {
-        //console.log( 'Success:', JSON.stringify(response) );
+        console.log( 'Success:');
         link_array = [];
         manifest_array = [];
         response.items.forEach( function(value) {
