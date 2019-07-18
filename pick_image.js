@@ -1,6 +1,8 @@
 const fetch = require("node-fetch");
 
-const manifest_url = "https://www.dl.ndl.go.jp/api/iiif/8929985/manifest.json";
+//https://www.dl.ndl.go.jp/api/iiif/8929985/manifest.json
+
+const manifest_url = "http://dcollections.lib.keio.ac.jp/sites/default/files/iiif/FKZ/F7-A01-01/manifest.json";
 const images = [];
 
 fetch(manifest_url
@@ -8,7 +10,11 @@ fetch(manifest_url
 .then(response => {
     console.log('Success!');
     response.sequences[0].canvases.forEach(element => {
-        images.push(element.thumbnail["@id"]);
+        if(element.thumbnail) {
+            images.push(element.thumbnail["@id"]);
+        }else {
+            images.push(element["@id"]);
+        }
     });
 })
 .then(response => console.log(images))

@@ -5,14 +5,11 @@ const { URLSearchParams } = require('url');
 
 fetch.Promise = Bluebird;
 
-function http_manifest( response ){
-    
-}
 
 function get_manifest( query ){
     let api_key = process.env.EUROPEAN_API_KEY;
     let url = new URL("https://www.europeana.eu/api/v2/search.json");
-    let params = {query:"sv_dcterms_conformsTo:*iiif*", rows:"10", wskey: api_key, qf: "title:*"+ query +"*"}
+    let params = {query:"sv_dcterms_conformsTo:*iiif*", rows:"10", wskey: api_key, qf: "title:*"+ query +"*"};
     url.search = new URLSearchParams(params);
 
 
@@ -20,22 +17,16 @@ function get_manifest( query ){
     .then( res => res.json() )
     .then( response => {
         console.log( 'Success:');
-        link_array = [];
         manifest_array = [];
+        var i=0;
         response.items.forEach( function(value) {
-            link_array.push(value.link);
-        });
-        link_array.forEach( function(value) {
-            fetch(value)
-            .then(res => res.json() )
-            .then( response => {
-                for(var i = 0; i < 3; i++ ){
-                    if(response.object.aggregations[0].webResources[i].dctermsIsReferencedBy != null){
-                        manifest_array.push(response.object.aggregations[0].webResources[i].dctermsIsReferencedBy[0]);
-                        console.log(response.object.aggregations[0].webResources[i].dctermsIsReferencedBy[0]);
-                    }
-                }
+            manifest_array.push({
+                "url" : "https://iiif.europeana.eu/presentation" + value.id + "/manifest.json",
+                "title" : value.title[0],
+                "description" : value.dcDescription[0]
             });
+            console.log(manifest_array[i]);
+            i++;
         });
     })
     .catch( error => console.error( 'Error:', error ) );

@@ -14,13 +14,15 @@ app.get("/", function (req, res){
         fetch(manifest_url)
         .then(res => res.json())
         .then(response => {
-            response.sequences[0].canvases.forEach(element => {
-                images.push(element.thumbnail["@id"]);
-            });
-        })
+            response.sequences.forEach( seq=> {
+                seq.canvases.forEach(element => {
+                    images.push(element.thumbnail["@id"]);
+                });
+            }
+        )})
         .then(()=>{
-            res.send(images);
             console.log(images);
+            res.send(images);
         })
         .catch(error => console.error('Error:', error));
     }else{
