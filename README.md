@@ -43,7 +43,7 @@ https://iiif.europeana.eu/presentation/9200356/BibliographicResource_30001183901
 #### 備考
 Manifestファイルに関するタイトルとディスクリプションを取得したい場合
 
-手順1で検索をかけると、responseのJSONは配列`item`sのパラメータとして`description`と`title`を持つことが分かる
+手順1で検索をかけると、responseのJSONは配列`items`のパラメータとして`description`と`title`を持つことが分かる
 
 descriptionもtitleも配列であることに注意して取得すればよい
 
@@ -57,8 +57,8 @@ descriptionもtitleも配列であることに注意して取得すればよい
 ],
 ```
 
-2019_07_20現在の進捗
-1.rest_api_for_search_manifest.jsを実行するとローカル(http://localhost:3000/)のサーバーが立ち上がる
+2019_07_20現在の進捗\n
+1.rest_api_for_search_manifest.jsを実行するとローカル(http://localhost:3000/)のサーバーが立ち上がる\n
 2.http://localhost:3000/ に対してPOSTリクエスト(パラメータはSlack参照)を投げるとManifestファイルの配列が返ってくる
 
-※ManifestファイルをEuropeanaに問い合わせるソースコードはsearch_amnifest.jsである
+※ManifestファイルをEuropeanaに問い合わせるソースコードはsearch_manifest.jsである
