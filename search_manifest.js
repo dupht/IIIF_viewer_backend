@@ -22,7 +22,8 @@ exports.get_manifest = async function( req_query, req_theme, req_sort, req_rows 
                 "url" : "https://iiif.europeana.eu/presentation" + value.id + "/manifest.json",
                 "title" : value.title[0],
                 "description" : value.dcDescription[0],
-                "thumbnail": ""
+                "thumbnail": value.edmPreview[0],
+                "license": value.dataProvider[0]
             });
         });
         return manifest_array;
