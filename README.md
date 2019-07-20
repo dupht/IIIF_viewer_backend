@@ -56,3 +56,9 @@ descriptionもtitleも配列であることに注意して取得すればよい
     "Tôkaidô gojûsan tsugi / Ill. Katsushika Hokusai東海道五十三次 / 葛飾北斎画. Japonais 381 (40)"
 ],
 ```
+
+2019_07_20現在の進捗
+1.rest_api_for_search_manifest.jsを実行するとローカル(http://localhost:3000/)のサーバーが立ち上がる
+2.http://localhost:3000/ に対してPOSTリクエスト(パラメータはSlack参照)を投げるとManifestファイルの配列が返ってくる
+
+※ManifestファイルをEuropeanaに問い合わせるソースコードはsearch_amnifest.jsである
