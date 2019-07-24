@@ -14,6 +14,7 @@ async function run() {
     await init();
 
     let open = (url) => {
+        console.log('url:'+url);
         const viewers = document.getElementById('viewers');
         let viewer = new IIIFMangaViewer(url);
         viewers.appendChild(viewer);
@@ -1526,11 +1527,11 @@ async function run() {
                     '<div class="input-field">\n' +
                     '   <i class="material-icons prefix">label</i>\n' +
                     '   <select>\n' +
-                    '      <option value="" disabled selected>None</option>\n' +
-                    '      <option value="archaelogy">archaelogy</option>\n' +
+                    '      <option value="" selected>None</option>\n' +
+                    '      <option value="archaeology">archaeology</option>\n' +
                     '      <option value="art">art</option>\n' +
                     '      <option value="fashion">fashion</option>\n' +
-                    '      <option value="manuscript">manuscript</option>\n' +
+                    // '      <option value="manuscripts">manuscripts</option>\n' +
                     '      <option value="map">map</option>\n' +
                     '      <option value="migration">migration</option>\n' +
                     '      <option value="music">music</option>\n' +
@@ -1654,33 +1655,16 @@ async function run() {
             }
             // todo post query
             let json = searchQuery.json();
-            // todo remove sample
-            // サンプル出力
-            let sample = new SearchResult("https://www.dl.ndl.go.jp/api/iiif/2542527/manifest.json",
-                "会津日新館細江図",
-                "要素が DOM に挿入されるたびに呼び出されます。\n" +
-                "リソースの取得やレンダリングなどの、セットアップ コードの実行に役立ちます。\n" +
-                "一般に、この時点まで作業を遅らせるようにする必要があります。\n" +
-                "[参考](https://developers.google.com/web/fundamentals/web-components/customelements?hl=ja)",
-                "https://www.dl.ndl.go.jp/api/iiif/2542527/T0000001/full/full/0/default.jpg");
-            let sample1 = new SearchResult("https://www.dl.ndl.go.jp/api/iiif/2532216/manifest.json",
-                "あいご十二段",
-                "インターネット公開（保護期間満了）",
-                "https://www.dl.ndl.go.jp/api/iiif/2532216/T0000001/full/full/0/default.jpg");
-            let sample2 = new SearchResult('http://www2.dhii.jp/nijl/NIJL0008/NA4-0644/manifest.json',
-                '絵本松の調',
-                '勝川春章 画',
-                undefined);
-            const sampleCard = new SearchCard(sample);
-            const sampleCard1 = new SearchCard(sample1);
-            const sampleCard2 = new SearchCard(sample2);
-            this.appendCard(sampleCard);
-            this.appendCard(sampleCard1);
-            this.appendCard(sampleCard2);
+            this.clear();
 
-            const url = '';
+            const url = '/search';
+            const headers = {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+              };
             fetch(url, {
                 method: 'POST',
+                headers,
                 body: json,
             }).then(res => {
                 return res.text()
@@ -1689,9 +1673,18 @@ async function run() {
                 if (!results) return;
                 for (let i = 0; i < results.len(); i++) {
                     const result = results.get(i);
+                    console.log(result.url());
+                    this.appendCard(new SearchCard(result));
                 }
             }).catch(err => {
             })
+        }
+
+        /**
+         * 前回の検索結果を消去する
+         */
+        clear() {
+            this.cards.innerHTML = '';
         }
 
         appendChild(newChild) {

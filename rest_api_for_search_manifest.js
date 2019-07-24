@@ -16,7 +16,7 @@ app.post("/search", async (req, res, next) => {
 
         let list = await search_manifest.get_manifest(request.query, request.theme, request.sort, request.rows);
         console.log(JSON.stringify(list));
-        res.status(200).json(JSON.stringify(list));
+        res.status(200).json(list);
 
     })().catch(next);
 
