@@ -1,0 +1,15 @@
+{
+  "name": "iiif-manga-viewer-frontend",
+  "collaborators": [
+    " <crome110mine@gmail.com>"
+  ],
+  "version": "0.1.0",
+  "files": [
+    "iiif_manga_viewer_frontend_bg.wasm",
+    "iiif_manga_viewer_frontend.js",
+    "iiif_manga_viewer_frontend.d.ts"
+  ],
+  "module": "iiif_manga_viewer_frontend.js",
+  "types": "iiif_manga_viewer_frontend.d.ts",
+  "sideEffects": "false"
+}
