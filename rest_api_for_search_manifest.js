@@ -3,10 +3,13 @@ const express = require("express");
 const app = express();
 const search_manifest = require("./search_manifest");
 
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.post("/", async (req, res, next) => {
+app.use(express.static('public'));
+
+app.post("/search", async (req, res, next) => {
 
     (async () => {
         let request = req.body;
