@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="css/viewer.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <script src="materialize-src/js/bin/materialize.min.js"></script>
+    <link href="materialize-src/sass/materialize.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>IIIF Manga Viewer</title>
+</head>
+<body>
+<header>
+    <nav>
+        <div class="nav-wrapper">
+            <a href="/" class="title">IIIF Manga Viewer</a>
+            <ul class="right nav-menu">
+                <li><a href="#modal-open" class="waves-effect waves-light btn btn-flat modal-trigger">Open Manifest<i
+                        class="material-icons right">open_in_browser</i></a></li>
+                <li><a href="#modal-search" class="waves-effect waves-light btn modal-trigger">Search Manifest<i
+                        class="material-icons right">search</i></a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div id="contents">
+    <div id="viewers">
+        <!--        <div is="iiif-manga-viewer" manifest="http://www2.dhii.jp/nijl/NIJL0001/SA4-0026/manifest.json"></div>-->
+        <!--        <div is="iiif-manga-viewer" manifest="http://www2.dhii.jp/nijl/NIJL0008/NA4-0644/manifest.json"></div>-->
+        <iiif-manga-viewer manifest="https://www.dl.ndl.go.jp/api/iiif/2542527/manifest.json"></iiif-manga-viewer>
+        <iiif-manga-viewer manifest="https://www.dl.ndl.go.jp/api/iiif/2532216/manifest.json"></iiif-manga-viewer>
+        <curation-viewer></curation-viewer>
+    </div>
+    <search-modal id="modal-search"></search-modal>
+    <open-modal id="modal-open"></open-modal>
+</div>
+</body>
+<script src="js/thread.js" type="module"></script>
+<script src="js/IIIFMangaViewer.js" type="module"></script>
+</html>
