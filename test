@@ -1,0 +1,296 @@
+{
+	"apikey": "ftVac562o",
+	"success": true,
+	"statsDuration": 191,
+	"requestNumber": 999,
+	"object": {
+		"type": "IMAGE",
+		"services": [
+			{
+				"about": "http://gallica.bnf.fr/iiif/ark:/12148/btv1b8304309t/f1",
+				"dctermsConformsTo": [
+					"http://iiif.io/api/image"
+				],
+				"doapImplements": [
+					"http://iiif.io/api/image/2/level2.json"
+				]
+			}
+		],
+		"agents": [
+			{
+				"about": "http://data.europeana.eu/agent/base/6083",
+				"prefLabel": {
+					"sv": [
+						"Keisai Eisen"
+					],
+					"ja": [
+						"渓斎英泉"
+					],
+					"en": [
+						"Keisai Eisen"
+					],
+					"hr": [
+						"Keisai Eisen"
+					],
+					"fr": [
+						"Keisai Eisen"
+					],
+					"ca": [
+						"Keisai Eisen"
+					],
+					"es": [
+						"Keisai Eisen"
+					]
+				},
+				"altLabel": {
+					"en": [
+						"Keidai Eisen",
+						"Ikeda Eisen,Ippitsuan",
+						"Eisen, Keidai"
+					]
+				},
+				"end": {
+					"def": [
+						"1848"
+					]
+				},
+				"owlSameAs": [
+					"http://hr.dbpedia.org/resource/Keisai_Eisen",
+					"http://rdf.freebase.com/ns/m.026w222",
+					"http://yago-knowledge.org/resource/Keisai_Eisen",
+					"http://wikidata.dbpedia.org/resource/Q3046492",
+					"http://es.dbpedia.org/resource/Keisai_Eisen",
+					"http://www.wikidata.org/entity/Q3046492",
+					"http://ca.dbpedia.org/resource/Keisai_Eisen",
+					"http://fr.dbpedia.org/resource/Keisai_Eisen",
+					"http://sv.dbpedia.org/resource/Keisai_Eisen",
+					"http://ja.dbpedia.org/resource/渓斎英泉",
+					"http://dbpedia.org/resource/Keisai_Eisen"
+				],
+				"rdaGr2DateOfBirth": {
+					"def": [
+						"1790"
+					]
+				},
+				"rdaGr2DateOfDeath": {
+					"def": [
+						"1848"
+					]
+				},
+				"rdaGr2BiographicalInformation": {
+					"sv": [
+						"Keisai Eisen, född 1790, död 1848, var en japansk ukiyo-e-konstnär som var specialiserad på bijinga (avbildningar av vackra kvinnor). Hans mest kända verk räknas som mästerverk inom den \"dekadenta\" Bunsei-eran (1818–1830)."
+					],
+					"ja": [
+						"渓斎 英泉（けいさい えいせん、寛政2年〈1790年〉- 嘉永元年7月22日〈1848年8月20日〉）とは、江戸時代後期に活躍した日本の浮世絵師。"
+					],
+					"en": [
+						"Keisai Eisen (渓斎 英泉, 1790 – 1848) was a Japanese ukiyo-e artist who specialised in bijinga (pictures of beautiful women). His best works, including his ōkubi-e (\"large head pictures\"), are considered to be masterpieces of the \"decadent\" Bunsei Era (1818–1830). He was also known as Ikeda Eisen, and wrote under the name of Ippitsuan."
+					],
+					"hr": [
+						"Keisai Eisen (渓斎 英泉) ili Ikeda Eisen, poznat i kao Ippitsuan (njegov spisateljski pseudonim), (Tokyo, 1791. - Tokyo, 1848.) bio je jedan od najslavnijih japanskih slikara i grafičara Ukiyo-e stila.Živio je i djelovao u Edu (danas Tokyo) gdje se smatrao klasikom japanskih višebojnih drvoreza u kojima je izrađivao žanr-scene iz gradskog života, ženske portrete (pretežito kurtizana), erotske prizore i miniciozno izvedene serije insekata, školjaka i ptica. Njegov najslavniji putopis, Šezdeset i devet postaja na Kiso Kaidō putu, završio je Hiroshige 1848. godine.Napisao je knjigu Povijest Ukiyo-e slikarstva u kojoj je opisao živote najslavnijih japanskih slikara.Utjecao je na Vincenta van Gogha i secesijsku ornamentiku."
+					],
+					"fr": [
+						"Keisai Eisen (渓斎英泉, Keisai Eisen?, 1790 - 1848) était un artiste japonais de l'estampe ukiyo-e que se spécialisa dans les bijinga, ou « portraits de jolies femmes ». Ses meilleures œuvres, qui comprennent ses okubi-e (visages en gros plan), sont considérés par certains comme des chefs-d'œuvre de la période « décadente » (ère Bunsei (1818 - 1830)). Il fut aussi connu sous le nom de Ikeda Eisen, et écrivit sous le nom de Ippitsuan."
+					],
+					"ca": [
+						"Keisai Eisen (渓斎 英泉, 1790 – 1848) va ser un artista d'ukiyo-e japonès que es va especialitzar en els bijinga (estampes de dones boniques). Als seus millors treballs, inclosos els seus okubi-e (\"grans retrats de cap\"), se'ls considera obres mestres de la \"decadent\" era Bunsei (1818–1830). També se'l coneixia com a Ikeda Eisen, i com a escriptor emprava el pseudònim Ippitsuan."
+					],
+					"es": [
+						"Este artículo está titulado de acuerdo a la onomástica japonesa, en que el apellido precede al nombre.Keisai Eisen (渓斎 英泉, Keisai Eisen?) (1791-1848) fue un pintor japonés, especializado en el estilo ukiyo-e. También fue escritor de novelas cómicas, con los seudónimos Chiyoda Sai-ichi e Ippitsuan Kako.Pertenecía a una familia de casta samurai, siendo su nombre de nacimiento Ikeda Eisen. Fue alumno de Kanō Hakkeisai, del que cogió el nombre (gō) de Keisai, y posteriormente de Kikukawa Eizan. Fue uno de los mejores representantes del género bijinga («cuadros de mujeres hermosas»): sus figuras eran voluminosas, con un intenso cromatismo y atención al detalle. Muchas de sus obras eran de tono erótico, publicando desde 1911 una serie de ilustraciones para libros de tema erótico, bajo el seudónimo Insai Hakusui. En estas imágenes muestra el ambiente un tanto decadente que se vivía en la era Bunsei (1818–1830). El mismo Eisen era aficionado a la bebida, y al parecer llegó incluso a regentar un burdel. También se dedicó al paisaje, algunos en colaboración con Utagawa Hiroshige, como en la serie Sesenta y nueve estaciones del Kisokaidō. Como escritor destacan sus biografías de los Cuarenta y siete Ronin y diversos libros, incluida una continuación de Ukiyo-e Ruiko (Historia de los grabados del Mundo Flotante), que documentaba la vida de los artistas de ukiyo-e."
+					]
+				}
+			}
+		],
+		"europeanaCompleteness": 10,
+		"europeanaAggregation": {
+			"about": "/aggregation/europeana/9200518/ark__12148_btv1b8304309t",
+			"aggregatedCHO": "/item/9200518/ark__12148_btv1b8304309t",
+			"edmCountry": {
+				"def": [
+					"France"
+				]
+			},
+			"edmLanguage": {
+				"def": [
+					"fr"
+				]
+			},
+			"edmPreview": "https://api.europeana.eu/api/v2/thumbnail-by-url.json?uri=https%3A%2F%2Fgallica.bnf.fr%2Fiiif%2Fark%3A%2F12148%2Fbtv1b8304309t%2Ff1%2Ffull%2F512%2C%2F0%2Fnative.jpg&type=IMAGE",
+			"edmLandingPage": "https://www.europeana.eu/portal/record/9200518/ark__12148_btv1b8304309t.html"
+		},
+		"proxies": [
+			{
+				"about": "/proxy/provider/9200518/ark__12148_btv1b8304309t",
+				"dcContributor": {
+					"def": [
+						"Keisai Eisen",
+						"Utagawa Toyokuni",
+						"Utagawa Kunisada",
+						"Utagawa Sadahide",
+						"渓斎英泉",
+						"歌川豐國",
+						"歌川 国貞",
+						"歌川 国安",
+						"歌川貞秀"
+					]
+				},
+				"dcCreator": {
+					"def": [
+						"Katsushika, Hokusai (1760-1849). Illustrateur"
+					]
+				},
+				"dcDescription": {
+					"def": [
+						"Appartient à l'ensemble documentaire : FranceJp0",
+						"Ancienne collection Johan Willem de Sturler",
+						"image fixe."
+					]
+				},
+				"dcFormat": {
+					"def": [
+						"Surimono 摺物",
+						"Surimono 摺物"
+					]
+				},
+				"dcIdentifier": {
+					"def": [
+						"http://gallica.bnf.fr/ark:/12148/btv1b8304309t"
+					]
+				},
+				"dcLanguage": {
+					"def": [
+						"jpn"
+					]
+				},
+				"dcRelation": {
+					"def": [
+						"Notice du catalogue : http://archivesetmanuscrits.bnf.fr/ark:/12148/cc11316j/ca59857546054029"
+					]
+				},
+				"dcRights": {
+					"def": [
+						"http://gallica.bnf.fr/html/conditions-dutilisation-des-contenus-de-gallica"
+					]
+				},
+				"dcSource": {
+					"def": [
+						"Bibliothèque nationale de France. Département des manuscrits. Japonais 381 (145)"
+					]
+				},
+				"dcTitle": {
+					"def": [
+						"Kyôka surimono / Ill. Katsushika Hokusai, Keisai Eisen, Utagawa Toyokuni, Utagawa Kunisada, Utagawa Sadahide.狂歌摺物 / 葛飾北斎, 渓斎英泉, 歌川豐國, 歌川 国貞, 歌川 国安, 歌川貞秀画. Japonais 381 (145)"
+					]
+				},
+				"dcType": {
+					"fre": [
+						"image fixe"
+					],
+					"eng": [
+						"still image"
+					]
+				},
+				"proxyIn": [
+					"/aggregation/provider/9200518/ark__12148_btv1b8304309t"
+				],
+				"proxyFor": "/item/9200518/ark__12148_btv1b8304309t",
+				"edmType": "IMAGE",
+				"europeanaProxy": false
+			},
+			{
+				"about": "/proxy/europeana/9200518/ark__12148_btv1b8304309t",
+				"dcIdentifier": {
+					"def": [
+						"ark:/12148/btv1b8304309t"
+					]
+				},
+				"proxyIn": [
+					"/aggregation/europeana/9200518/ark__12148_btv1b8304309t"
+				],
+				"proxyFor": "/item/9200518/ark__12148_btv1b8304309t",
+				"europeanaProxy": true
+			}
+		],
+		"providedCHOs": [
+			{
+				"about": "/item/9200518/ark__12148_btv1b8304309t"
+			}
+		],
+		"about": "/9200518/ark__12148_btv1b8304309t",
+		"edmDatasetName": [
+			"9200518_Ag_BnF_Gallica_typedoc_images"
+		],
+		"europeanaCollectionName": [
+			"9200518_Ag_BnF_Gallica_typedoc_images"
+		],
+		"aggregations": [
+			{
+				"about": "/aggregation/provider/9200518/ark__12148_btv1b8304309t",
+				"edmDataProvider": {
+					"fr": [
+						"Bibliothèque nationale de France"
+					]
+				},
+				"edmIsShownBy": "http://gallica.bnf.fr/iiif/ark:/12148/btv1b8304309t/f1/full/512,/0/native.jpg",
+				"edmIsShownAt": "http://gallica.bnf.fr/ark:/12148/btv1b8304309t",
+				"edmObject": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8304309t/f1/full/512,/0/native.jpg",
+				"edmProvider": {
+					"fr": [
+						"Bibliothèque nationale de France"
+					]
+				},
+				"edmRights": {
+					"def": [
+						"http://rightsstatements.org/vocab/NoC-OKLR/1.0/"
+					]
+				},
+				"edmUgc": "false",
+				"aggregatedCHO": "/item/9200518/ark__12148_btv1b8304309t",
+				"webResources": [
+					{
+						"about": "http://gallica.bnf.fr/ark:/12148/btv1b8304309t",
+						"textAttributionSnippet": "Kyôka surimono / Ill. Katsushika Hokusai, Keisai Eisen, Utagawa Toyokuni, Utagawa Kunisada, Utagawa Sadahide.狂歌摺物 / 葛飾北斎, 渓斎英泉, 歌川豐國, 歌川 国貞, 歌川 国安, 歌川貞秀画. Japonais 381 (145) - https://www.europeana.eu/portal/record/9200518/ark__12148_btv1b8304309t.html. Katsushika, Hokusai (1760-1849). Illustrateur. (fr) Bibliothèque nationale de France - http://gallica.bnf.fr/ark:/12148/btv1b8304309t. No Copyright - Other Known Legal Restrictions - http://rightsstatements.org/vocab/NoC-OKLR/1.0/",
+						"htmlAttributionSnippet": "<span about='https://www.europeana.eu/portal/record/9200518/ark__12148_btv1b8304309t'><a href='https://www.europeana.eu/portal/record/9200518/ark__12148_btv1b8304309t.html'><span property='dc:title'>Kyôka surimono / Ill. Katsushika Hokusai, Keisai Eisen, Utagawa Toyokuni, Utagawa Kunisada, Utagawa Sadahide.狂歌摺物 / 葛飾北斎, 渓斎英泉, 歌川豐國, 歌川 国貞, 歌川 国安, 歌川貞秀画. Japonais 381 (145)</span></a>. <span property='dc:creator'>Katsushika, Hokusai (1760-1849). Illustrateur. </span><a href='http://gallica.bnf.fr/ark:/12148/btv1b8304309t' xml:lang='fr'>Bibliothèque nationale de France</a>. <a href='http://rightsstatements.org/vocab/NoC-OKLR/1.0/' rel='xhv:license http://www.europeana.eu/schemas/edm/rights'>No Copyright - Other Known Legal Restrictions</a><span rel='cc:useGuidelines' resource='http://www.europeana.eu/rights/pd-usage-guide/'>.</span></span>",
+						"ebucoreHasMimeType": "text/html;charset=UTF-8",
+						"ebucoreFileByteSize": 190195
+					},
+					{
+						"about": "http://gallica.bnf.fr/iiif/ark:/12148/btv1b8304309t/f1/full/512,/0/native.jpg",
+						"textAttributionSnippet": "Kyôka surimono / Ill. Katsushika Hokusai, Keisai Eisen, Utagawa Toyokuni, Utagawa Kunisada, Utagawa Sadahide.狂歌摺物 / 葛飾北斎, 渓斎英泉, 歌川豐國, 歌川 国貞, 歌川 国安, 歌川貞秀画. Japonais 381 (145) - https://www.europeana.eu/portal/record/9200518/ark__12148_btv1b8304309t.html. Katsushika, Hokusai (1760-1849). Illustrateur. (fr) Bibliothèque nationale de France - http://gallica.bnf.fr/ark:/12148/btv1b8304309t. No Copyright - Other Known Legal Restrictions - http://rightsstatements.org/vocab/NoC-OKLR/1.0/",
+						"htmlAttributionSnippet": "<span about='https://www.europeana.eu/portal/record/9200518/ark__12148_btv1b8304309t'><a href='https://www.europeana.eu/portal/record/9200518/ark__12148_btv1b8304309t.html'><span property='dc:title'>Kyôka surimono / Ill. Katsushika Hokusai, Keisai Eisen, Utagawa Toyokuni, Utagawa Kunisada, Utagawa Sadahide.狂歌摺物 / 葛飾北斎, 渓斎英泉, 歌川豐國, 歌川 国貞, 歌川 国安, 歌川貞秀画. Japonais 381 (145)</span></a>. <span property='dc:creator'>Katsushika, Hokusai (1760-1849). Illustrateur. </span><a href='http://gallica.bnf.fr/ark:/12148/btv1b8304309t' xml:lang='fr'>Bibliothèque nationale de France</a>. <a href='http://rightsstatements.org/vocab/NoC-OKLR/1.0/' rel='xhv:license http://www.europeana.eu/schemas/edm/rights'>No Copyright - Other Known Legal Restrictions</a><span rel='cc:useGuidelines' resource='http://www.europeana.eu/rights/pd-usage-guide/'>.</span></span>",
+						"svcsHasService": [
+							"http://gallica.bnf.fr/iiif/ark:/12148/btv1b8304309t/f1"
+						],
+						"dctermsIsReferencedBy": [
+							"https://gallica.bnf.fr/iiif/ark:/12148/btv1b8304309t/manifest.json"
+						],
+						"ebucoreHasMimeType": "image/jpeg",
+						"ebucoreFileByteSize": 43812,
+						"ebucoreWidth": 512,
+						"ebucoreHeight": 472,
+						"edmHasColorSpace": "sRGB",
+						"edmComponentColor": [
+							"#808080",
+							"#F5DEB3",
+							"#D2B48C",
+							"#C0C0C0",
+							"#696969",
+							"#D3D3D3"
+						],
+						"ebucoreOrientation": "landscape"
+					},
+					{
+						"about": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8304309t/f1/full/512,/0/native.jpg",
+						"textAttributionSnippet": "Kyôka surimono / Ill. Katsushika Hokusai, Keisai Eisen, Utagawa Toyokuni, Utagawa Kunisada, Utagawa Sadahide.狂歌摺物 / 葛飾北斎, 渓斎英泉, 歌川豐國, 歌川 国貞, 歌川 国安, 歌川貞秀画. Japonais 381 (145) - https://www.europeana.eu/portal/record/9200518/ark__12148_btv1b8304309t.html. Katsushika, Hokusai (1760-1849). Illustrateur. (fr) Bibliothèque nationale de France - http://gallica.bnf.fr/ark:/12148/btv1b8304309t. No Copyright - Other Known Legal Restrictions - http://rightsstatements.org/vocab/NoC-OKLR/1.0/",
+						"htmlAttributionSnippet": "<span about='https://www.europeana.eu/portal/record/9200518/ark__12148_btv1b8304309t'><a href='https://www.europeana.eu/portal/record/9200518/ark__12148_btv1b8304309t.html'><span property='dc:title'>Kyôka surimono / Ill. Katsushika Hokusai, Keisai Eisen, Utagawa Toyokuni, Utagawa Kunisada, Utagawa Sadahide.狂歌摺物 / 葛飾北斎, 渓斎英泉, 歌川豐國, 歌川 国貞, 歌川 国安, 歌川貞秀画. Japonais 381 (145)</span></a>. <span property='dc:creator'>Katsushika, Hokusai (1760-1849). Illustrateur. </span><a href='http://gallica.bnf.fr/ark:/12148/btv1b8304309t' xml:lang='fr'>Bibliothèque nationale de France</a>. <a href='http://rightsstatements.org/vocab/NoC-OKLR/1.0/' rel='xhv:license http://www.europeana.eu/schemas/edm/rights'>No Copyright - Other Known Legal Restrictions</a><span rel='cc:useGuidelines' resource='http://www.europeana.eu/rights/pd-usage-guide/'>.</span></span>"
+					}
+				]
+			}
+		],
+		"timestamp_created_epoch": 1555085961452,
+		"timestamp_update_epoch": 1555085961452,
+		"timestamp_created": "2019-04-12T16:19:21.452Z",
+		"timestamp_update": "2019-04-12T16:19:21.452Z"
+	}
+}

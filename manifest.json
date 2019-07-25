@@ -1,0 +1,151 @@
+{
+	"@context": "http://iiif.io/api/presentation/2/context.json",
+	"@type": "sc:Manifest",
+	"@id": "cojt-iiif-viewer-manifest.json",
+	"label": "",
+	"metadata": [
+		{
+			"label": "Persistent ID",
+			"value": "info:ndljp/pid/8929985"
+		},
+		{
+			"label": "Title",
+			"value": "Account of a Japanese romance = 浮世形六扇屏"
+		},
+		{
+			"label": "Publication Date",
+			"value": "慶応3 [1867]"
+		},
+		{
+			"label": "Publication Date (W3CDTF fortmat)",
+			"value": "1867"
+		},
+		{
+			"label": "Call Number",
+			"value": "208-67"
+		},
+		{
+			"label": "Bibliographic ID",
+			"value": "024931700"
+		},
+		{
+			"label": "Access Restrictions",
+			"value": "インターネット公開（保護期間満了）"
+		},
+		{
+			"label": "URL",
+			"value": "http://dl.ndl.go.jp/info:ndljp/pid/8929985"
+		}
+	],
+	"viewingDirection": "left-to-right",
+	"license": "http://dl.ndl.go.jp/ja/iiif_license.html",
+	"attribution": "国立国会図書館 National Diet Library, JAPAN",
+	"logo": "http://dl.ndl.go.jp/resources/images/dlicon.png",
+	"seeAlso": "http://dl.ndl.go.jp/api/oaipmh?verb=GetRecord&metadataPrefix=dcndl_porta&identifier=oai:dl.ndl.go.jp:info:ndljp/pid/8929985",
+	"sequences": [
+		{
+			"@type": "sc:Sequence",
+			"viewingHint": "individuals",
+			"thumbnail": {
+				"@id": "https://www.dl.ndl.go.jp/api/iiif/8929985/T0000001/full/full/0/default.jpg",
+				"@type": "dctypes:Image",
+				"format": "image/jpeg"
+			},
+			"canvases": [
+				{
+					"@id": "https://www.dl.ndl.go.jp/api/iiif/8929985/canvas/1",
+					"@type": "sc:Canvas",
+					"label": "1",
+					"width": 5141,
+					"height": 3654,
+					"thumbnail": {
+						"@id": "https://www.dl.ndl.go.jp/api/iiif/8929985/F0000001/full/full/0/default.jpg",
+						"@type": "dctypes:Image",
+						"format": "image/jpeg"
+					},
+					"images": [
+						{
+							"@type": "oa:Annotation",
+							"motivation": "sc:painting",
+							"on": "https://www.dl.ndl.go.jp/api/iiif/8929985/canvas/1",
+							"resource": {
+								"@id": "https://www.dl.ndl.go.jp/api/iiif/8929985/R0000001/full/full/0/default.jpg",
+								"@type": "dctypes:Image",
+								"format": "image/jpeg",
+								"width": 5141,
+								"height": 3654,
+								"service": {
+									"@context": "http://iiif.io/api/image/2/context.json",
+									"@id": "https://www.dl.ndl.go.jp/api/iiif/8929985/R0000001",
+									"profile": "http://iiif.io/api/image/2/level1.json"
+								}
+							}
+						}
+					]
+				},
+				{
+					"@id": "https://www.dl.ndl.go.jp/api/iiif/8929985/canvas/2",
+					"@type": "sc:Canvas",
+					"label": "2",
+					"width": 5141,
+					"height": 3654,
+					"thumbnail": {
+						"@id": "https://www.dl.ndl.go.jp/api/iiif/8929985/F0000002/full/full/0/default.jpg",
+						"@type": "dctypes:Image",
+						"format": "image/jpeg"
+					},
+					"images": [
+						{
+							"@type": "oa:Annotation",
+							"motivation": "sc:painting",
+							"on": "https://www.dl.ndl.go.jp/api/iiif/8929985/canvas/2",
+							"resource": {
+								"@id": "https://www.dl.ndl.go.jp/api/iiif/8929985/R0000002/full/full/0/default.jpg",
+								"@type": "dctypes:Image",
+								"format": "image/jpeg",
+								"width": 5141,
+								"height": 3654,
+								"service": {
+									"@context": "http://iiif.io/api/image/2/context.json",
+									"@id": "https://www.dl.ndl.go.jp/api/iiif/8929985/R0000002",
+									"profile": "http://iiif.io/api/image/2/level1.json"
+								}
+							}
+						}
+					]
+				},
+				{
+					"@id": "https://www.dl.ndl.go.jp/api/iiif/8929985/canvas/3",
+					"@type": "sc:Canvas",
+					"label": "3",
+					"width": 5141,
+					"height": 3654,
+					"thumbnail": {
+						"@id": "https://www.dl.ndl.go.jp/api/iiif/8929985/F0000003/full/full/0/default.jpg",
+						"@type": "dctypes:Image",
+						"format": "image/jpeg"
+					},
+					"images": [
+						{
+							"@type": "oa:Annotation",
+							"motivation": "sc:painting",
+							"on": "https://www.dl.ndl.go.jp/api/iiif/8929985/canvas/3",
+							"resource": {
+								"@id": "https://www.dl.ndl.go.jp/api/iiif/8929985/R0000003/full/full/0/default.jpg",
+								"@type": "dctypes:Image",
+								"format": "image/jpeg",
+								"width": 5141,
+								"height": 3654,
+								"service": {
+									"@context": "http://iiif.io/api/image/2/context.json",
+									"@id": "https://www.dl.ndl.go.jp/api/iiif/8929985/R0000003",
+									"profile": "http://iiif.io/api/image/2/level1.json"
+								}
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}
