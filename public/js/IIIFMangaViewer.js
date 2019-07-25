@@ -397,9 +397,6 @@ async function run() {
         crop = (event) => {
             let origin = this.cropOrigin;
             if (event.target !== this.image || !origin) {
-                console.log('out of target');
-                console.log(event.target);
-                console.log(origin);
             } else {
                 let manifestID = this.imageViewer.getAttribute('manifest');
                 if (!manifestID) {
@@ -1035,7 +1032,6 @@ async function run() {
                     if (!this.curationViewer.swap(evt.oldIndex, evt.newIndex)) {
                         M.Toast({html: '<i class="material-icons error left">error</i>Swap Failed'});
                     }
-                    console.log(this.curationViewer.viewer.json());
                 }
             })
         }
@@ -1529,9 +1525,10 @@ async function run() {
      * 検索バー
      */
     class SearchBar extends HTMLElement {
-        constructor(cards) {
+        constructor(cards, preloader) {
             super();
             this.cards = cards;
+            this.preloader = preloader;
         }
 
         /**
@@ -1740,35 +1737,13 @@ async function run() {
             // todo post query
             let json = searchQuery.json();
             this.clear();
-            // todo remove sample
-            // サンプル出力
-            // let sample = new SearchResult("https://www.dl.ndl.go.jp/api/iiif/2542527/manifest.json",
-            //     "会津日新館細江図",
-            //     "要素が DOM に挿入されるたびに呼び出されます。\n" +
-            //     "リソースの取得やレンダリングなどの、セットアップ コードの実行に役立ちます。\n" +
-            //     "一般に、この時点まで作業を遅らせるようにする必要があります。\n" +
-            //     "[参考](https://developers.google.com/web/fundamentals/web-components/customelements?hl=ja)",
-            //     "https://www.dl.ndl.go.jp/api/iiif/2542527/T0000001/full/full/0/default.jpg");
-            // let sample1 = new SearchResult("https://www.dl.ndl.go.jp/api/iiif/2532216/manifest.json",
-            //     "あいご十二段",
-            //     "インターネット公開（保護期間満了）",
-            //     "https://www.dl.ndl.go.jp/api/iiif/2532216/T0000001/full/full/0/default.jpg");
-            // let sample2 = new SearchResult('http://www2.dhii.jp/nijl/NIJL0008/NA4-0644/manifest.json',
-            //     '絵本松の調',
-            //     '勝川春章 画',
-            //     undefined);
-            // const sampleCard = new SearchCard(sample);
-            // const sampleCard1 = new SearchCard(sample1);
-            // const sampleCard2 = new SearchCard(sample2);
-            // this.appendCard(sampleCard);
-            // this.appendCard(sampleCard1);
-            // this.appendCard(sampleCard2);
 
             const url = '/search';
             const headers = {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             };
+            this.preloading();
             fetch(url, {
                 method: 'POST',
                 headers,
@@ -1780,11 +1755,18 @@ async function run() {
                 if (!results) return;
                 for (let i = 0; i < results.len(); i++) {
                     const result = results.get(i);
-                    console.log(result.url());
                     this.appendCard(new SearchCard(result));
                 }
+                this.preloading();
             }).catch(err => {
             })
+        }
+
+        /**
+         * preloaderの表示/非表示
+         */
+        preloading() {
+            this.preloader.classList.toggle('hide');
         }
 
         /**
@@ -1900,9 +1882,61 @@ async function run() {
             const cards = document.createElement('div');
             cards.classList.add('cards');
 
+            // preloader
+            let preloader = document.createElement('div');
+            preloader.innerHTML =
+                '<div class="row">' +
+                '<div class="col offset-m3 m6 center">' +
+                '<div class="preloader-wrapper big active">\n' +
+                '<div class="spinner-layer spinner-blue">\n' +
+                '<div class="circle-clipper left">\n' +
+                '<div class="circle"></div>\n' +
+                '</div>' +
+                '<div class="gap-patch">\n' +
+                '<div class="circle"></div>\n' +
+                '</div>' +
+                '<div class="circle-clipper right">\n' +
+                '<div class="circle"></div>\n' +
+                '</div>\n' +
+                '</div>' +
+                '<div class="spinner-layer spinner-red">\n' +
+                '<div class="circle-clipper left">\n' +
+                '<div class="circle"></div>\n' +
+                '</div><div class="gap-patch">\n' +
+                '<div class="circle"></div>\n' +
+                '</div><div class="circle-clipper right">\n' +
+                '<div class="circle"></div>\n' +
+                '</div>\n' +
+                '</div>\n' +
+                '<div class="spinner-layer spinner-yellow">\n' +
+                '<div class="circle-clipper left">\n' +
+                '<div class="circle"></div>\n' +
+                '</div><div class="gap-patch">\n' +
+                '<div class="circle"></div>\n' +
+                '</div><div class="circle-clipper right">\n' +
+                '<div class="circle"></div>\n' +
+                '</div>\n' +
+                '</div>\n' +
+                '<div class="spinner-layer spinner-green">\n' +
+                '<div class="circle-clipper left">\n' +
+                '<div class="circle"></div>\n' +
+                '</div><div class="gap-patch">\n' +
+                '<div class="circle"></div>\n' +
+                '</div><div class="circle-clipper right">\n' +
+                '<div class="circle"></div>\n' +
+                '</div>\n' +
+                '</div>' +
+                '</div>' +
+                '</div>' +
+                '</div>';
+            preloader = preloader.firstElementChild;
+            preloader.classList.add('hide');
+
             // 検索バーの設置
-            const search_bar = new SearchBar(cards);
+            const search_bar = new SearchBar(cards, preloader);
             this.appendChild(search_bar);
+            // preloaderの設置
+            this.appendChild(preloader);
             // cardsの設置
             this.appendChild(cards);
         }
