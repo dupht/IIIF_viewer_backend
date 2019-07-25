@@ -905,6 +905,15 @@ export class WasmCurationViewer {
         this.ptr = wasm.wasmcurationviewer_new(addHeapObject(element));
     }
     /**
+    * @param {string} json
+    * @returns {boolean}
+    */
+    set_items(json) {
+        const ptr0 = passStringToWasm(json);
+        const len0 = WASM_VECTOR_LEN;
+        return (wasm.wasmcurationviewer_set_items(this.ptr, ptr0, len0)) !== 0;
+    }
+    /**
     * @returns {string}
     */
     label() {
@@ -935,6 +944,22 @@ export class WasmCurationViewer {
 
     }
     /**
+    * @returns {number}
+    */
+    size() {
+        return wasm.wasmcurationviewer_size(this.ptr) >>> 0;
+    }
+    /**
+    * @param {number} index
+    * @returns {CurationItem | undefined}
+    */
+    get(index) {
+
+        const ptr = wasm.wasmcurationviewer_get(this.ptr, index);
+        return ptr === 0 ? undefined : CurationItem.__wrap(ptr);
+
+    }
+    /**
     * @returns {CurationItem | undefined}
     */
     now() {
@@ -956,6 +981,29 @@ export class WasmCurationViewer {
     */
     remove(index) {
         return wasm.wasmcurationviewer_remove(this.ptr, index);
+    }
+    /**
+    * @param {number} oldindex
+    * @param {number} newindex
+    * @returns {boolean}
+    */
+    swap(oldindex, newindex) {
+        return (wasm.wasmcurationviewer_swap(this.ptr, oldindex, newindex)) !== 0;
+    }
+    /**
+    * @returns {string}
+    */
+    json() {
+        const retptr = globalArgumentPtr();
+        wasm.wasmcurationviewer_json(retptr, this.ptr);
+        const mem = getUint32Memory();
+        const rustptr = mem[retptr / 4];
+        const rustlen = mem[retptr / 4 + 1];
+        if (rustptr === 0) return;
+        const realRet = getStringFromWasm(rustptr, rustlen).slice();
+        wasm.__wbindgen_free(rustptr, rustlen * 1);
+        return realRet;
+
     }
     /**
     * \u{30a4}\u{30e1}\u{30fc}\u{30b8}\u{3092}\u{8868}\u{793a}\u{3059}\u{308b}
@@ -1039,11 +1087,11 @@ function init(module) {
     let result;
     const imports = {};
     imports.wbg = {};
-    imports.wbg.__wbindgen_object_clone_ref = function(arg0) {
-        return addHeapObject(getObject(arg0));
-    };
     imports.wbg.__wbindgen_object_drop_ref = function(arg0) {
         takeObject(arg0);
+    };
+    imports.wbg.__wbindgen_object_clone_ref = function(arg0) {
+        return addHeapObject(getObject(arg0));
     };
     imports.wbg.__wbg_log_9dc262a10bfe3437 = function(arg0, arg1) {
         let varg0 = getStringFromWasm(arg0, arg1);

@@ -282,6 +282,11 @@ export class WasmCurationViewer {
 */
   constructor(element: any);
 /**
+* @param {string} json 
+* @returns {boolean} 
+*/
+  set_items(json: string): boolean;
+/**
 * @returns {string} 
 */
   label(): string;
@@ -289,6 +294,15 @@ export class WasmCurationViewer {
 * @returns {string} 
 */
   image_label(): string;
+/**
+* @returns {number} 
+*/
+  size(): number;
+/**
+* @param {number} index 
+* @returns {CurationItem | undefined} 
+*/
+  get(index: number): CurationItem | undefined;
 /**
 * @returns {CurationItem | undefined} 
 */
@@ -303,6 +317,16 @@ export class WasmCurationViewer {
 * @returns {void} 
 */
   remove(index: number): void;
+/**
+* @param {number} oldindex 
+* @param {number} newindex 
+* @returns {boolean} 
+*/
+  swap(oldindex: number, newindex: number): boolean;
+/**
+* @returns {string} 
+*/
+  json(): string;
 /**
 * \u{30a4}\u{30e1}\u{30fc}\u{30b8}\u{3092}\u{8868}\u{793a}\u{3059}\u{308b}
 * @param {CurationItem} item 
