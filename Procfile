@@ -1,0 +1,1 @@
+web: node rest_api_for_search_manifest.js
