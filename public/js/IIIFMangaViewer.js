@@ -14,7 +14,6 @@ async function run() {
     await init();
 
     let open = (url) => {
-        console.log('url:'+url);
         const viewers = document.getElementById('viewers');
         let viewer = new IIIFMangaViewer(url);
         viewers.appendChild(viewer);
@@ -322,7 +321,7 @@ async function run() {
             //     mangaViewer = mangaViewer.parentElement;
             //     if (!mangaViewer) return;
             // }
-            // this.imageViewer = mangaViewer;
+            // this.curationViewer = mangaViewer;
 
             // ドラッグ
             {
@@ -679,8 +678,8 @@ async function run() {
 
                         const image = viewerCanvas.image;
                         const canvas = document.createElement('canvas');
-                        canvas.width = image.width;
-                        canvas.height = image.height;
+                        canvas.width = image.naturalWidth;
+                        canvas.height = image.naturalHeight;
                         canvas.getContext("2d").drawImage(image, 0, 0);
 
                         const link = document.createElement('a');
@@ -1010,13 +1009,13 @@ async function run() {
             // 必要なclassを追加
             this.classList.add('collection', 'with-header', 'curation-list');
 
-            this.imageViewer = imageViewer;
+            this.curationViewer = imageViewer;
         }
 
         onOff() {
             this.classList.toggle('hide');
 
-            const a = this.imageViewer.listViewIcon;
+            const a = this.curationViewer.listViewIcon;
             if (!this.classList.contains('hide')) {
                 a.classList.add('available');
             } else {
@@ -1031,6 +1030,14 @@ async function run() {
          * [参考](https://developers.google.com/web/fundamentals/web-components/customelements?hl=ja)
          */
         connectedCallback() {
+            this.sortable = Sortable.create(this, {
+                onEnd: (evt) => {
+                    if (!this.curationViewer.swap(evt.oldIndex, evt.newIndex)) {
+                        M.Toast({html: '<i class="material-icons error left">error</i>Swap Failed'});
+                    }
+                    console.log(this.curationViewer.viewer.json());
+                }
+            })
         }
 
         /**
@@ -1059,7 +1066,7 @@ async function run() {
          */
         appendChild(newChild) {
             if (newChild instanceof CurationItem) {
-                const child = new CurationListViewItem(newChild, this.imageViewer, this);
+                const child = new CurationListViewItem(newChild, this.curationViewer, this);
                 super.appendChild(child);
             }
         }
@@ -1100,19 +1107,16 @@ async function run() {
         connectedCallback() {
             viewerCounter++;
 
-            if (CurationViewer.curationViewer) {
-                CurationViewer.curationViewer.remove();
+            // 一番最初にDOMに挿入されたCurationViewerが規定のCurationViewerになる
+            if (!CurationViewer.curationViewer) {
+                CurationViewer.curationViewer = this;
+                this.classList.add('default', 'hide');
             }
-            CurationViewer.curationViewer = this;
-
-            this.id = 'cutation-viewer';
 
             // card
-            this.classList.add('card', 'hide');
+            this.classList.add('card');
 
             // canvasを設定
-            // const canvas = document.createElement('canvas');
-            // this.appendChild(canvas);
             const viewerCanvas = new ViewerCanvas(this);
             this.viewerCanvas = viewerCanvas;
             this.appendChild(viewerCanvas);
@@ -1147,8 +1151,37 @@ async function run() {
                         a.classList.add('close');
                         a.innerHTML =
                             '<i class="material-icons">close</i>Close';
+                        if (CurationViewer.curationViewer === this) {
+                            a.onclick = () => {
+                                this.classList.toggle('hide');
+                            };
+                        } else {
+                            a.onclick = () => {
+                                this.remove();
+                            };
+                        }
+                        li.appendChild(a);
+                        dropdown.appendChild(li);
+                    }
+                    {
+                        const li = document.createElement('li');
+                        const a = document.createElement('a');
+                        a.classList.add('save_json');
+                        a.innerHTML =
+                            '<i class="material-icons">save</i>Save Curation';
                         a.onclick = () => {
-                            this.remove();
+                            const jsonBlob = new Blob([this.viewer.json()], {type: "text/plain;charset=utf-8"});
+
+                            const link = document.createElement('a');
+                            link.classList.add('hide');
+                            document.body.appendChild(link);
+
+                            link.href = URL.createObjectURL(jsonBlob);
+                            link.download = 'Curation.json';
+
+                            link.click();
+
+                            link.remove();
                         };
                         li.appendChild(a);
                         dropdown.appendChild(li);
@@ -1169,21 +1202,14 @@ async function run() {
                     li.appendChild(a);
                     ulL.appendChild(li);
                 }
-                {
-                    const li = document.createElement('li');
-                    const a = document.createElement('a');
-                    a.innerHTML =
-                        '<i class="material-icons">view_module</i>';
-                    a.onclick = () => {
-                        this.iconView.onOff();
-                    };
-                    this.iconViewIcon = a;
-                    li.appendChild(a);
-                    ulL.appendChild(li);
-                }
                 navWrapper.appendChild(ulL);
 
                 const label = document.createElement('span');
+                if (CurationViewer.curationViewer === this) {
+                    label.innerText = 'Curation Viewer (Default)';
+                } else {
+                    label.innerText = 'Curation Viewer';
+                }
                 this.label = label;
                 navWrapper.appendChild(label);
 
@@ -1227,8 +1253,8 @@ async function run() {
 
                         const image = viewerCanvas.image;
                         const canvas = document.createElement('canvas');
-                        canvas.width = image.width;
-                        canvas.height = image.height;
+                        canvas.width = image.naturalWidth;
+                        canvas.height = image.naturalHeight;
                         canvas.getContext("2d").drawImage(image, 0, 0);
 
                         const link = document.createElement('a');
@@ -1433,6 +1459,64 @@ async function run() {
             this.classList.remove('hide');
         }
 
+        /**
+         * 要素の順序を入れ替える
+         * @param oldindex
+         * @param newindex
+         * @return {boolean}
+         */
+        swap = (oldindex, newindex) => {
+            return this.viewer.swap(oldindex, newindex)
+        }
+
+        fromJson = (jsonText) => {
+            if (CurationViewer.curationViewer === this) {
+                return;
+            }
+            if (this.viewer.set_items(jsonText)) {
+                let promises = [];
+                for (let i = 0; i < this.viewer.size(); i++) {
+                    const promise = new Promise(() => {
+                        let item = this.viewer.get(i);
+                        const image = document.createElement('img');
+                        image.crossOrigin = "Anonymous";
+                        image.src = item.image_id();
+                        image.onload = () => {
+                            let canvas = document.createElement('canvas');
+                            let [sx, sy, sw, sh, dx, dy, dw, dh] =
+                                [
+                                    item.get_x_start(),
+                                    item.get_y_start(),
+                                    item.get_x_end() - item.get_x_start(),
+                                    item.get_y_end() - item.get_y_start(),
+                                    0,
+                                    0,
+                                    item.get_x_end() - item.get_x_start(),
+                                    item.get_y_end() - item.get_y_start()
+                                ];
+                            canvas.width = dw;
+                            canvas.height = dh;
+                            canvas.getContext('2d').drawImage(image, sx, sy, sw, sh, dx, dy, dw, dh);
+
+                            let img = new Image();
+                            img.src = canvas.toDataURL('image/png');
+
+                            item.set_image(img);
+                            this.push(item);
+                            // resolve(item.label());
+                        }
+                    });
+                    promises.push(promise);
+                }
+
+                Promise.all(promises);
+
+            } else {
+                M.Toast({html: '<i class="material-icons error left">error</i>Parse Failed'});
+                this.remove();
+            }
+        }
+
         move(newX, newY) {
             let image = this.viewerCanvas.getImage();
             image.style.transform = 'translate(' + newX + 'px,' + newY + 'px)';
@@ -1527,11 +1611,11 @@ async function run() {
                     '<div class="input-field">\n' +
                     '   <i class="material-icons prefix">label</i>\n' +
                     '   <select>\n' +
-                    '      <option value="" selected>None</option>\n' +
-                    '      <option value="archaeology">archaeology</option>\n' +
+                    '      <option value="" disabled selected>None</option>\n' +
+                    '      <option value="archaelogy">archaelogy</option>\n' +
                     '      <option value="art">art</option>\n' +
                     '      <option value="fashion">fashion</option>\n' +
-                    // '      <option value="manuscripts">manuscripts</option>\n' +
+                    '      <option value="manuscript">manuscript</option>\n' +
                     '      <option value="map">map</option>\n' +
                     '      <option value="migration">migration</option>\n' +
                     '      <option value="music">music</option>\n' +
@@ -1656,12 +1740,35 @@ async function run() {
             // todo post query
             let json = searchQuery.json();
             this.clear();
+            // todo remove sample
+            // サンプル出力
+            // let sample = new SearchResult("https://www.dl.ndl.go.jp/api/iiif/2542527/manifest.json",
+            //     "会津日新館細江図",
+            //     "要素が DOM に挿入されるたびに呼び出されます。\n" +
+            //     "リソースの取得やレンダリングなどの、セットアップ コードの実行に役立ちます。\n" +
+            //     "一般に、この時点まで作業を遅らせるようにする必要があります。\n" +
+            //     "[参考](https://developers.google.com/web/fundamentals/web-components/customelements?hl=ja)",
+            //     "https://www.dl.ndl.go.jp/api/iiif/2542527/T0000001/full/full/0/default.jpg");
+            // let sample1 = new SearchResult("https://www.dl.ndl.go.jp/api/iiif/2532216/manifest.json",
+            //     "あいご十二段",
+            //     "インターネット公開（保護期間満了）",
+            //     "https://www.dl.ndl.go.jp/api/iiif/2532216/T0000001/full/full/0/default.jpg");
+            // let sample2 = new SearchResult('http://www2.dhii.jp/nijl/NIJL0008/NA4-0644/manifest.json',
+            //     '絵本松の調',
+            //     '勝川春章 画',
+            //     undefined);
+            // const sampleCard = new SearchCard(sample);
+            // const sampleCard1 = new SearchCard(sample1);
+            // const sampleCard2 = new SearchCard(sample2);
+            // this.appendCard(sampleCard);
+            // this.appendCard(sampleCard1);
+            // this.appendCard(sampleCard2);
 
             const url = '/search';
             const headers = {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
-              };
+            };
             fetch(url, {
                 method: 'POST',
                 headers,
@@ -1863,6 +1970,85 @@ async function run() {
     }
 
     customElements.define('open-modal', OpenModal);
+
+    /**
+     * ファイルを読み取ってCurationViewerを開くmodal
+     */
+    class OpenCurationModal extends HTMLElement {
+        constructor() {
+            super();
+        }
+
+        /**
+         * 要素が DOM に挿入されるたびに呼び出されます。
+         * リソースの取得やレンダリングなどの、セットアップ コードの実行に役立ちます。
+         * 一般に、この時点まで作業を遅らせるようにする必要があります。
+         * [参考](https://developers.google.com/web/fundamentals/web-components/customelements?hl=ja)
+         */
+        connectedCallback() {
+            this.classList.add('modal');
+            M.Modal.init(this, {});
+
+            // content
+            const content = document.createElement('div');
+            content.classList.add('modal-content');
+            this.content = content;
+            super.appendChild(content);
+
+            // title
+            const title = document.createElement('h3');
+            title.innerHTML =
+                '<i class="material-icons left fontsize-inherit">description</i>Open Curation File';
+            this.appendChild(title);
+
+            // file input
+            const fileInput = document.createElement('div');
+            fileInput.classList.add('input-field', 'file-field');
+            fileInput.innerHTML =
+                '<div class="btn">\n' +
+                '   <span><i class="material-icons">description</i></span>\n' +
+                '   <input type="file" accept="application/json">\n' +
+                '</div>\n' +
+                '<div class="file-path-wrapper">\n' +
+                '   <input class="file-path validate" type="text">\n' +
+                '</div>';
+            this.appendChild(fileInput);
+            this.input = fileInput.querySelector('input[type="file"]');
+
+            // footer
+            const footer = document.createElement('div');
+            footer.classList.add('modal-footer');
+            this.footer = footer;
+            super.appendChild(footer);
+
+            // submit
+            const a = document.createElement('a');
+            a.classList.add('modal-close', 'waves-effect', 'waves-blue', 'btn-flat', 'secondary-color');
+            a.innerHTML =
+                '<i class="material-icons left">description</i>Open';
+            a.onclick = () => {
+                let reader = new FileReader();
+                reader.readAsText(this.input.files[0]);
+                reader.onload = () => {
+                    const cv = new CurationViewer();
+                    document.getElementById('viewers').appendChild(cv);
+                    cv.fromJson(reader.result);
+                }
+            };
+            this.footerAppendChild(a);
+        }
+
+        appendChild(newChild) {
+            this.content.appendChild(newChild);
+        }
+
+        footerAppendChild(newChild) {
+            this.footer.appendChild(newChild);
+        }
+    }
+
+    customElements.define('open-curation-modal', OpenCurationModal);
+
 }
 
 run();
