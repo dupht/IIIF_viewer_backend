@@ -13,8 +13,7 @@ search_manifest_url = async function( id ){
     return fetch( url )
     .then(res => res.json() )
     .then(response => {
-        response.
-    })
+    });
     .catch(error => console.error( 'Error:', error ));
 }
 
