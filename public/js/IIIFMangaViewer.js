@@ -19,6 +19,8 @@ async function run() {
         viewers.appendChild(viewer);
     };
 
+    let curationViewer;
+
     let viewerCounter = 0;
 
     /**
@@ -358,7 +360,7 @@ async function run() {
             return this.image;
         }
 
-        cropStart = (event) => {
+        cropStart(event) {
             if (event.target !== this.image) return;
             this.area.classList.remove('hide');
 
@@ -367,9 +369,9 @@ async function run() {
             this.area.style.bottom = event.offsetY + this.image.offsetTop + 'px';
             this.area.style.left = event.offsetX + this.image.offsetLeft + 'px';
             this.area.style.right = event.offsetX + this.image.offsetLeft + 'px';
-        };
+        }
 
-        cropping = (event) => {
+        cropping(event) {
             if (event.target !== this.image || !this.cropOrigin) return;
 
             let origin = this.cropOrigin;
@@ -392,9 +394,9 @@ async function run() {
             this.area.style.height = (bottom - top) + 'px';
             this.area.style.left = left + this.image.offsetLeft + 'px';
             this.area.style.width = (right - left) + 'px';
-        };
+        }
 
-        crop = (event) => {
+        crop(event) {
             let origin = this.cropOrigin;
             if (event.target !== this.image || !origin) {
             } else {
@@ -426,14 +428,14 @@ async function run() {
                     img.src = canvas.toDataURL('image/png');
 
                     item.set_image(img);
-                    CurationViewer.curationViewer.push(item);
+                    curationViewer.push(item);
                 }
             }
 
             this.area.classList.add('hide');
             // finish
             // this.cropOrigin = undefined;
-        };
+        }
 
         appendChild(newChild) {
             if (newChild instanceof HTMLImageElement) {
@@ -643,6 +645,7 @@ async function run() {
                 navWrapper.appendChild(ulL);
 
                 const label = document.createElement('span');
+                label.classList.add('truncate');
                 this.label = label;
                 navWrapper.appendChild(label);
 
@@ -933,6 +936,12 @@ async function run() {
                 }
             } else {
                 this.listView.activate(index);
+
+                // const image = this.querySelector('viewer-canvas > img');
+                // zoom: reset
+                // image.dispatchEvent(new CustomEvent('wheelzoom.destroy'));
+                // zoom: set
+                // wheelzoom(image);
             }
         };
 
@@ -1089,7 +1098,7 @@ async function run() {
      * キュレーション一覧
      */
     class CurationViewer extends BasicViewer {
-        static curationViewer = undefined;
+        // static curationViewer = undefined;
 
         constructor() {
             super();
@@ -1115,8 +1124,8 @@ async function run() {
             viewerCounter++;
 
             // 一番最初にDOMに挿入されたCurationViewerが規定のCurationViewerになる
-            if (!CurationViewer.curationViewer) {
-                CurationViewer.curationViewer = this;
+            if (!curationViewer) {
+                curationViewer = this;
                 this.classList.add('default', 'hide');
             }
 
@@ -1158,7 +1167,7 @@ async function run() {
                         a.classList.add('close');
                         a.innerHTML =
                             '<i class="material-icons">close</i>Close';
-                        if (CurationViewer.curationViewer === this) {
+                        if (curationViewer === this) {
                             a.onclick = () => {
                                 this.classList.toggle('hide');
                             };
@@ -1212,7 +1221,7 @@ async function run() {
                 navWrapper.appendChild(ulL);
 
                 const label = document.createElement('span');
-                if (CurationViewer.curationViewer === this) {
+                if (curationViewer === this) {
                     label.innerText = 'Curation Viewer (Default)';
                 } else {
                     label.innerText = 'Curation Viewer';
@@ -1457,7 +1466,7 @@ async function run() {
          * 要素を追加する
          * @param item {CurationItem}
          */
-        push = (item) => {
+        push(item) {
             this.viewer.push(item);
             this.viewer.show_last();
 
@@ -1472,12 +1481,12 @@ async function run() {
          * @param newindex
          * @return {boolean}
          */
-        swap = (oldindex, newindex) => {
+        swap(oldindex, newindex) {
             return this.viewer.swap(oldindex, newindex)
         }
 
-        fromJson = (jsonText) => {
-            if (CurationViewer.curationViewer === this) {
+        fromJson(jsonText) {
+            if (curationViewer === this) {
                 return;
             }
             if (this.viewer.set_items(jsonText)) {
